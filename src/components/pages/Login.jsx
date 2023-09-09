@@ -22,7 +22,7 @@ function Login() {
   }, [show1]);
 
   const { dispatch } = useContext(AuthContext);
-  let username = useRef();
+  let username = useRef("");
   const password = useRef();
 
   const AnyomousLoginHandler = async (e) => {
@@ -55,7 +55,10 @@ function Login() {
     } catch (err) {
       console.log(err)
       dispatch({ type: "LOGIN_FAILURE", payload: err });
-      NotificationManager.error(err.response.data,'Error',  5000, );
+      if(err.response){
+        NotificationManager.error(err.response.data,'Error',  5000, );
+
+      }
     }
   };
   return (
@@ -70,6 +73,10 @@ function Login() {
               <div className="loginRightTopTop">
                 <span className="loginRightTopLogo">AlgebraImageApp</span>
               </div>
+              <center>
+                {username.current.value && <span>Hello, {username.current.value}</span>}
+
+              </center>
               <div className="loginRightTopForm">
                 <form className="loginBox" onSubmit={HandlerLoginForm}>
                   <input
@@ -111,6 +118,11 @@ function Login() {
             <center>
 
               <button className="loginButton" style={{width:"70%"}} onClick={AnyomousLoginHandler}>Continue as Guest</button>
+
+            </center>
+            <center>
+
+              <button className="loginButton" style={{width:"70%"}} onClick={() => {navigate("/vunerable");}}>Vulnerability Test</button>
 
             </center>
           </div>

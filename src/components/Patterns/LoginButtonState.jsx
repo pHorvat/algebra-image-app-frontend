@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from "axios";
 
 class LoginButtonState extends Component {
     constructor(props) {
@@ -8,12 +9,24 @@ class LoginButtonState extends Component {
         };
     }
 
-    handleClick = () => {
+    handleClick = async () => {
         if (this.state.isLoggedIn) {
             localStorage.setItem("user", null);
-            this.setState({ isLoggedIn: false });
+            try {
+                const res = await axios.post("http://localhost:5000/api/user/logout", {
+                });
+            } catch (e) {
+                console.log(e)
+            }
+            this.setState({isLoggedIn: false});
             window.location.href = '/login';
         } else {
+            try {
+                const res = await axios.post("http://localhost:5000/api/user/logout", {
+                });
+            } catch (e) {
+                console.log(e)
+            }
             localStorage.setItem("user", null);
             window.location.href = '/login';
         }

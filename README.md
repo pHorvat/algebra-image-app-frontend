@@ -1,4 +1,4 @@
-# Alebra Image App Frontend
+# Algebra Image App Frontend
 
 This is a React web application that allows users to view and upload images. It provides features such as user login/signup, image viewing, image upload to Azure Storage container, user profiles, hashtags and description for every uploaded photo, and search functionality.
 

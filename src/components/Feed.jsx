@@ -80,7 +80,7 @@ function Feed(props) {
   return (
     <>
       <FeedContainer>
-        <div onScroll={onScroll} ref={listInnerRef} className="FeedWrapper">
+        <div onScroll={onScroll} ref={listInnerRef} className="FeedWrapper"> {/* FUNCTIONAL PROGRAMMING */}
           {posts.map((p) => (
             <Post
               key={p._id}
@@ -89,6 +89,22 @@ function Feed(props) {
               onChange={props.onChange}
             ></Post>
           ))}
+          {/* NON-FUNCTIONAL:
+          var postElements = [];
+          for (var i = 0; i < posts.length; i++) {
+              var p = posts[i];
+              var postElement = React.createElement(
+                  Post,
+                  {
+                      key: p._id,
+                      post: p,
+                      rerenderFeed: props.rerenderFeed,
+                      onChange: props.onChange
+                  }
+              );
+              postElements.push(postElement);
+          }
+           */}
           {loadingNewPosts && (
             <center>
               <SpinnerDotted color="rgb(0,149,246)" />

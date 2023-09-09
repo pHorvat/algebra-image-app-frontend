@@ -84,7 +84,7 @@ function Share(props) {
   async function uploadImageWithFormat(file, formatStrategy) {
     const formattedImage =await formatStrategy.execute(file);
     const containerUrl = 'https://algebrastorage.blob.core.windows.net/images';
-    const sasToken = 'sp=racwdli&st=2023-06-01T09:12:28Z&se=2023-07-01T17:12:28Z&sv=2022-11-02&sr=c&sig=M8CxwCqX%2FoyM5w5CVn7QCe6rRN2tO2j2f44%2FrfBbQ9M%3D';
+    const sasToken = 'sp=racwdli&st=2023-07-19T08:30:58Z&se=2025-05-01T16:30:58Z&sv=2022-11-02&sr=c&sig=V%2BR2EuudH3wEeUddhjwPufenHL0wdjiqHBF2Zj2XsMc%3D';
 
     const fileName = file.name.split('.').slice(0, -1).join('.');
     console.log(formattedImage)

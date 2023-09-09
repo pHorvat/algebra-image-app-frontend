@@ -8,6 +8,8 @@ import { useContext, useState, useCallback } from "react";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 import { NotificationContainer } from "react-notifications";
 import Manage from "./components/pages/Manage";
+import VulnerableComponent from "./components/VunerablePage";
+
 function App() {
   const { user } = useContext(AuthContext);
   const [rerenderFeed, setRerenderFeed] = useState(0);
@@ -56,6 +58,10 @@ function App() {
                   )
                 }
             />
+              <Route
+                  path="/vunerable"
+                  element={<VulnerableComponent/>}
+              />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
