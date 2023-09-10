@@ -65,7 +65,7 @@ function Share(props) {
 
         console.log(formDataInfo)
 
-        await axiosJWT.post("http://localhost:5000/api/Photo", formDataInfo, {
+        await axiosJWT.post("https://algebraimageappbackend.azurewebsites.net/api/Photo", formDataInfo, {
           headers: { Authorization: "Bearer " + user.accessToken },
         });
         NotificationManager.success("Success", "Post has been created", 3000);

@@ -25,7 +25,7 @@ function Topbar(props) {
   const [searchquery, setSearchquery] = useState("");
   const [showBarSearchMobile, setShowBarSearchMobile] = useState(false);
   const logoutHandler = async () => {
-    await axios.post("http://localhost:5000/api/user/logout", {
+    await axios.post("https://algebraimageappbackend.azurewebsites.net/api/user/logout", {
     },
         {
           headers: { Authorization: "Bearer " + user.accessToken },
@@ -60,7 +60,7 @@ function Topbar(props) {
       try {
         if (searchquery.length >= 1) {
           const searchresult = await axios.get(
-            `http://localhost:5000/api/photo/search/${searchquery}`,
+            `https://algebraimageappbackend.azurewebsites.net/api/photo/search/${searchquery}`,
               /*
             {
               params: { search: searchquery },

@@ -30,7 +30,7 @@ function Feed(props) {
       console.log(user)
       const res = await axiosJWT.get(
         //`http://localhost:5000/api/article/timeline?page=${currPage}`,
-        `http://localhost:5000/api/photo`,
+        `https://algebraimageappbackend.azurewebsites.net/api/photo`,
         { headers: { Authorization: "Bearer " + user.accessToken } }
       );
       if (true) {

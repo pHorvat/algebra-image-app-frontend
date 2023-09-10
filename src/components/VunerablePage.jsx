@@ -31,7 +31,7 @@ function VulnerableComponent() {
 
     async function fetchUser() {
         try{
-            const response = await axios.get(`http://localhost:5000/api/User/${userId}`);
+            const response = await axios.get(`https://algebraimageappbackend.azurewebsites.net/api/User/${userId}`);
             setUser(response.data);
         }catch (e) {
             console.log(e.toString())
@@ -46,7 +46,7 @@ function VulnerableComponent() {
 
     async function fetchConsumption() {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/User/consumption/${userId}`);
+                    const response = await axios.get(`https://algebraimageappbackend.azurewebsites.net/api/User/consumption/${userId}`);
                     const { data } = response;
                     console.log(response)
                     document.getElementById('consumptionOutput').innerHTML = response.data;

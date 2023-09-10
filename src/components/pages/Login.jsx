@@ -28,7 +28,7 @@ function Login() {
   const AnyomousLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login", {
+      const res = await axios.post("https://algebraimageappbackend.azurewebsites.net/api/user/login", {
         username: "anonymous",
         password: "anonymous",
       });
@@ -44,7 +44,7 @@ function Login() {
   const HandlerLoginForm = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login", {
+      const res = await axios.post("https://algebraimageappbackend.azurewebsites.net/api/user/login", {
         username: username.current.value,
         password: password.current.value,
       });

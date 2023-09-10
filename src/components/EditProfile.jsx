@@ -17,7 +17,7 @@ function EditProfile(props) {
       console.log(updatedUser)
       console.log(user)
       const response = await axios.put(
-          `http://localhost:5000/api/User/updateTier`,
+          `https://algebraimageappbackend.azurewebsites.net/api/User/updateTier`,
           updatedUser,{
             headers: { Authorization: "Bearer " + user.accessToken },
           }

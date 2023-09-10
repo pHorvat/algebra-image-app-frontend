@@ -38,7 +38,7 @@ function Manage(props) {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/User/');
+            const response = await axios.get('https://algebraimageappbackend.azurewebsites.net/api/User/');
             setUsers(response.data);
         } catch (error) {
             console.log('Error fetching users:', error);

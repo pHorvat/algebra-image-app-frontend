@@ -25,7 +25,7 @@ function Post(props) {
   Intercept(axiosJWT);
   const deleteHandler = async () => {
     try {
-      await axiosJWT.delete(`http://localhost:5000/api/photo/${post.id}`, {
+      await axiosJWT.delete(`https://algebraimageappbackend.azurewebsites.net/api/photo/${post.id}`, {
         headers: { Authorization: "Bearer " + user.accessToken },
       });
       NotificationManager.success("Success", "Post has been deleted", 3000);
@@ -41,7 +41,7 @@ function Post(props) {
     useEffect(() => {
       async function fetchUsername() {
         try {
-          const response = await axios.get(`http://localhost:5000/api/User/${id}`);
+          const response = await axios.get(`https://algebraimageappbackend.azurewebsites.net/api/User/${id}`);
           const { data } = response;
           setUsername(data.username);
         } catch (error) {

@@ -37,7 +37,7 @@ function Profile(props) {
 
   const deleteHandler = async (id) => {
     try {
-      await axiosJWT.delete(`http://localhost:5000/api/photo/${id}`, {
+      await axiosJWT.delete(`https://algebraimageappbackend.azurewebsites.net/${id}`, {
         headers: { Authorization: "Bearer " + currentUser.accessToken },
       });
       NotificationManager.success("Success", "Post has been deleted", 3000);
@@ -53,7 +53,7 @@ function Profile(props) {
     let tempUserId=[];
     const fetchUser = async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/User/u/" + username
+        "https://algebraimageappbackend.azurewebsites.net/api/User/u/" + username
       );
       setCurrentUserProfile(res.data);
       tempUserId=res.data;
@@ -63,7 +63,7 @@ function Profile(props) {
     };
     const fetchPosts = async () => {
       const pst = await axios.get(
-          "http://localhost:5000/api/Photo/user/" + tempUserId.id
+          "https://algebraimageappbackend.azurewebsites.net/api/Photo/user/" + tempUserId.id
       );
       console.log(pst)
       setPosts(

@@ -70,7 +70,7 @@ useEffect(() => {
       }
 
       console.log(submitData)
-      await axiosJWT.put("http://localhost:5000/api/photo/", submitData, {
+      await axiosJWT.put("https://algebraimageappbackend.azurewebsites.net/api/photo/", submitData, {
         headers: { Authorization: "Bearer " + user.accessToken },
       });
       NotificationManager.success("Success", "Edit successful", 3000);

@@ -14,7 +14,8 @@ function Signup() {
     e.preventDefault();
     const data = { tier, username, password };
     try {
-      await axios.post("http://localhost:5000/api/user/register", data);
+      await axios.post("https://algebraimageappbackend.azurewebsites.net/api/user/register", data);
+      //await axios.post("http://localhost:5000/api/user/register", data);
       navigate("/login");
     } catch (error) {
       NotificationManager.error(error.response.data.message, "Warning", 3000);
