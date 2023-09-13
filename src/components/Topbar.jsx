@@ -61,6 +61,9 @@ function Topbar(props) {
         if (searchquery.length >= 1) {
           const searchresult = await axios.get(
             `http://localhost:5000/api/photo/search/${searchquery}`,
+              {
+                headers: { Authorization: "Bearer " + user.accessToken },
+              }
               /*
             {
               params: { search: searchquery },

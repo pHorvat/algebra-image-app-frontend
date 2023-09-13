@@ -29,8 +29,8 @@ function Home(props) {
         const ageInSeconds = getTokenAge(user.accessToken);
         console.log('Token age (in seconds):', ageInSeconds);
         if(ageInSeconds<64800){
-            localStorage.setItem("user", null);
-            window.location.href = '/login';
+            //localStorage.setItem("user", null);
+            //window.location.href = '/login';
         }
     })
 

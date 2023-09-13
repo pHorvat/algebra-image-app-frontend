@@ -7,10 +7,17 @@ const Intercept = (instance) => {
   const { user, dispatch } = useContext(AuthContext);
   const refreshToken = async () => {
     try {
-      const res = await axios.post("http://localhost:8000/api/user/refresh", {
-        token: user.refreshToken,
-      });
+      const res = await axios.post("http://localhost:5000/api/user/refresh",
+          {
+              token: user.refreshToken,
+      },
+          {
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+              }
+          });
       dispatch({ type: "REFRESH_TOKEN", payload: res.data });
+      user.accessToken=res.data.accessToken;
       return res.data;
     } catch (err) {}
   };

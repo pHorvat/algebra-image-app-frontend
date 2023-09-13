@@ -38,7 +38,10 @@ function Manage(props) {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/User/');
+            const response = await axios.get('http://localhost:5000/api/User/',
+                {
+                    headers: { Authorization: "Bearer " + user.accessToken },
+                });
             setUsers(response.data);
         } catch (error) {
             console.log('Error fetching users:', error);

@@ -53,7 +53,10 @@ function Profile(props) {
     let tempUserId=[];
     const fetchUser = async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/User/u/" + username
+        "http://localhost:5000/api/User/u/" + username,
+          {
+            headers: { Authorization: "Bearer " + currentUser.accessToken },
+          }
       );
       setCurrentUserProfile(res.data);
       tempUserId=res.data;
@@ -63,7 +66,10 @@ function Profile(props) {
     };
     const fetchPosts = async () => {
       const pst = await axios.get(
-          "http://localhost:5000/api/Photo/user/" + tempUserId.id
+          "http://localhost:5000/api/Photo/user/" + tempUserId.id,
+          {
+            headers: { Authorization: "Bearer " + currentUser.accessToken },
+          }
       );
       console.log(pst)
       setPosts(

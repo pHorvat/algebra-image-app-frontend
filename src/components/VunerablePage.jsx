@@ -17,39 +17,43 @@ function VulnerableComponent() {
         return input.replace(/[^a-zA-Z0-9]/g, ''); // Keep only alphanumeric characters
     };
 
-    const handleSubmit = () => {
-        //const output = `<p>${input}</p>`; // User input is directly embedded
-        const output = `<p>${sanitizeUsername(input)}</p>`; // User input is directly embedded
+    function sanitizeSQL(input) {
+        const forbiddenWords = [';', 'insert', 'drop', 'into', 'where'];
+
+        for (const word of forbiddenWords) {
+            if (input.toLowerCase().includes(word)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    const handleSubmit = () => { //XSS
+        //const output = `<p>${input}</p>`;
+        const output = `<p>${sanitizeUsername(input)}</p>`;
         document.getElementById('output').innerHTML = output;
     };
 
-    let { userSuppliedData } = user;
 
-    useEffect(() => {
-        fetchUser();
-    }, [userId]);
 
-    async function fetchUser() {
-        try{
-            const response = await axios.get(`http://localhost:5000/api/User/${userId}`);
-            setUser(response.data);
-        }catch (e) {
-            console.log(e.toString())
-        }
 
-        console.log(user)
-    }
-
-    function handleInputChange(e) {
-        setUserId(e.target.value);
-    }
-
-    async function fetchConsumption() {
+    async function fetchConsumption() {  //SQL
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/User/consumption/${userId}`);
-                    const { data } = response;
-                    console.log(response)
-                    document.getElementById('consumptionOutput').innerHTML = response.data;
+                    if(true){
+                    //if(sanitizeSQL(userId)){
+                        const response = await axios.get(`http://localhost:5000/api/User/consumption/${userId}`);
+                        const { data } = response;
+                        console.log(response)
+                        document.getElementById('consumptionOutput').innerHTML = response.data;
+                    }else {
+                        document.getElementById('consumptionOutput').innerHTML = "Error";
+                    }
+
+
+
+
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -69,7 +73,8 @@ function VulnerableComponent() {
             </DivBox>
 
             <DivBox>
-                <p>XSS Attack ({xss})</p>
+                <p>XSS Attack</p>
+                <p>{xss}</p>
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
                 <button onClick={handleSubmit}>Submit</button>
                 <div id="output"></div>
