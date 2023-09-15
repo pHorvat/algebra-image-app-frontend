@@ -31,8 +31,8 @@ function VulnerableComponent() {
 
 
     const handleSubmit = () => { //XSS
-        //const output = `<p>${input}</p>`;
-        const output = `<p>${sanitizeUsername(input)}</p>`;
+        const output = `<p>${input}</p>`;
+        //const output = `<p>${sanitizeUsername(input)}</p>`;
         document.getElementById('output').innerHTML = output;
     };
 
